@@ -28,11 +28,11 @@ In Microsoft Sentinel, this KQL query was used to create a new Scheduled Analyti
 * **Query Scheduling:** Run query every 4 hours, looking up data from the last 24 hours.
 * **Entity Mapping:** To enable automatic incident correlation and investigation features, the following entities were mapped from the query's output columns:
   
-| Entity  | Identifier  | Value              |
+| Entity  | Identifier  | Mapped KQL Column  |
 | :------ | :---------- | :------------------|
-| Account | Name        | AccountName        |
-| Host    | HostName    | DeviceName         |
-| Process | CommandLine | ProcessCommandLine |
+| Account | Name        | `AccountName`        |
+| Host    | HostName    | `DeviceName`         |
+| Process | CommandLine | `ProcessCommandLine` |
 
 ### 3. Simulating the Attack & Triggering the Alert
 To validate the rule, a command was executed on a test virtual machine to simulate an attacker downloading a payload. This command downloads the harmless EICAR test file and then executes it. Although the download is harmless the URI was defanged as a good practice.
