@@ -22,7 +22,7 @@ DeviceProcessEvents
 
 ```
 
-### Sentinel Analytics Rule Configuration
+#### Sentinel Analytics Rule Configuration
 In Microsoft Sentinel, this KQL query was used to create a new Scheduled Analytics Rule with the following settings:
 
 * **Query Scheduling:** Run query every 4 hours, looking up data from the last 24 hours.
