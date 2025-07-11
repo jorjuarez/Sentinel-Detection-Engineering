@@ -14,7 +14,7 @@ A KQL (Kusto Query Language) query was designed to search the `DeviceProcessEven
 **The KQL Query:**
 ```kql
 DeviceProcessEvents
-| where TimeGenerated between (datetime(2025-06-06T04:49:00Z) .. datetime(2025-06-07T04:38:00Z)) //The times shown are for the integrety of the report, otherwise we would set this line to look data >= ago(24h)
+| where TimeGenerated between (datetime(2025-06-06T04:49:00Z) .. datetime(2025-06-07T04:38:00Z)) // Pinned time range for report integrity. A live rule would use: | where TimeGenerated >= ago(24h)
 | where (FileName contains "powershell.exe" or FileName contains "pwsh.exe") 
   and (ProcessCommandLine contains "Invoke-WebRequest" or ProcessCommandLine contains "iwr" or ProcessCommandLine contains "wget")
 | project TimeGenerated, AccountName, DeviceName, FileName, InitiatingProcessCommandLine, ProcessCommandLine
@@ -22,7 +22,7 @@ DeviceProcessEvents
 
 ```
 
-#### Sentinel Analytics Rule Configuration
+#### Sentinel Rule Configuration
 In Microsoft Sentinel, this KQL query was used to create a new Scheduled Analytics Rule with the following settings:
 
 * **Query Scheduling:** Run query every 4 hours, looking up data from the last 24 hours.
